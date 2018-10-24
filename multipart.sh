@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # Author: Param Aggarwal
 # Multipart parallel downloader in Shell using cURL
 
@@ -11,10 +11,10 @@ url=$1
 parts=20
 
 name="$(expr $url : '.*/\(.*\)')"
-size="$(curl --head --silent $url | grep Content-Length | sed 's/[^0-9]*//g')"
+size="$(curl --head --silent $url | grep -E "[Cc]ontent-[Ll]ength" | sed 's/[^0-9]*//g')"
 echo Size: $size
 echo Filename: $name
-echo Downloading in $parts parts
+echo Downloading in $parts parts, c: $c
 
 for (( c=1; c<=$parts; c++ ))
 do
